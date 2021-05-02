@@ -1,6 +1,6 @@
 def show_page(driver):
     driver.get('http://localhost:3000/')
-    driver.implicitly_wait(60)
+    driver.implicitly_wait(10)
 
 
 def click_account_icon(driver):
