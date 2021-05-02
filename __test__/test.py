@@ -33,12 +33,12 @@ class test_selenium(unittest.TestCase):
         is_exist_logout_button = is_missing_element(driver,
                                                     '//*[@id="menu-appbar"]/div[3]/ul/li')
 
-        self.assertTrue(is_exist_logout_button, "Logout Button is not exist")
+        self.assertFalse(is_exist_logout_button, "Logout Button is not exist")
 
         basic.click_account_icon(driver)
         logoutButton = driver.find_element_by_xpath(
             '//*[@id="menu-appbar"]/div[3]/ul/li')
-        self.assertFalse(logoutButton.is_enabled())
+        self.assertTrue(logoutButton.is_enabled())
 
     def tearDown(self):
         self.driver.close()
