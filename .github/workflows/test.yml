@@ -1,4 +1,4 @@
-name: build
+name: test
 
 on: [push]
 
@@ -14,3 +14,10 @@ jobs:
       - name: E2E Testing
         working-directory: __test__
         run: pip3 install -r requirements.txt && python3 test.py
+      - name: Archive Screen Shots
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: selenium-failed-screenshots
+          path: __test__/screens/**/*.png
+          if-no-files-found: ignore
