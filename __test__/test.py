@@ -30,7 +30,7 @@ class test_selenium(unittest.TestCase):
         driver = self.driver
 
         basic.show_page(driver)
-        is_exist_logout_button = element_is_missing(driver,
+        is_exist_logout_button = is_missing_element(driver,
                                                     '//*[@id="menu-appbar"]/div[3]/ul/li')
 
         self.assertTrue(is_exist_logout_button, "Logout Button is not exist")
@@ -53,7 +53,7 @@ def execute_scenario(driver, fn):
         raise e
 
 
-def element_is_missing(driver, xpath):
+def is_missing_element(driver, xpath):
     try:
         driver.find_element_by_xpath(xpath)
         return True
